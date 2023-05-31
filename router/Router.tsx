@@ -1,4 +1,4 @@
-import { useRoutes, Navigate } from "react-router-dom";
+import { useRoutes, Navigate, Outlet, useOutlet } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -10,6 +10,9 @@ import Service from "../pages/Service";
 import NumberLevel from "../pages/NumberLevel";
 import Report from "../pages/Report";
 import Setting from "../pages/Setting";
+import Detail from "../pages/Device/Detail";
+import Update from "../pages/Device/Update";
+import Create from "../pages/Device/Create";
 
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -58,9 +61,27 @@ const Router = () => {
       path: "/device",
       element: (
         <Layout>
-          <Device />
+          <Outlet />
         </Layout>
       ),
+      children: [
+        {
+          path: "",
+          element: <Device />,
+        },
+        {
+          path: "detail/:id",
+          element: <Detail />,
+        },
+        {
+          path: "update/:id",
+          element: <Update />
+        },
+        {
+          path: "create",
+          element: <Create />
+        }
+      ],
     },
     {
       path: "/service",

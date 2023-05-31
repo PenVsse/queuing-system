@@ -11,8 +11,8 @@ const ConfigBreadcrumb = styled(Breadcrumb)`
   font-size: 1.25rem;
   font-weight: 700;
 
-  :where(.css-dev-only-do-not-override-csj7ow).ant-breadcrumb li:last-child {
-    color: #ff9138;
+  li:last-child {
+    color: #ff9138 !important;
   }
 `;
 

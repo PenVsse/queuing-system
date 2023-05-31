@@ -63,6 +63,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/login");
@@ -91,7 +92,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           mode="inline"
           style={{ height: "70%", border: 0 }}
           items={items}
-          selectedKeys={pathname === "/" ? [] : [pathname]}
+          selectedKeys={pathname === "/" ? [] : [`/${pathname.split('/')[1]}`]}
           onSelect={(e) => navigate(e.key)}
         />
         <div
