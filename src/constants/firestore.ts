@@ -6,3 +6,6 @@ export const DEVICE_COLLECTION = "Devices";
 
 // Service
 export const SERVICE_COLLECTION = "Services";
+
+// Allocation number
+export const ALLOCATION_NUMBER = "AllocationNumbers";

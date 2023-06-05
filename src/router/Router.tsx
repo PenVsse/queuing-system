@@ -1,11 +1,10 @@
-import { useRoutes, Navigate, Outlet, useOutlet } from "react-router-dom";
+import { useRoutes, Navigate, Outlet } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import { useAppSelector } from "../store/hook";
 import Layout from "../layout/Layout";
 import Dashboard from "../pages/Dashboard";
-import NumberLevel from "../pages/NumberLevel";
 import Report from "../pages/Report";
 import Setting from "../pages/Setting";
 
@@ -18,6 +17,10 @@ import Service from "../pages/Service";
 import CreateService from "../pages/Service/Create";
 import UpdateService from "../pages/Service/Update";
 import DetailService from "../pages/Service/Detail";
+
+import NumberLevel from "../pages/NumberLevel";
+import CreateNumberLevel from "../pages/NumberLevel/Create";
+import DetailNumberLevel from "../pages/NumberLevel/Detail";
 
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -118,9 +121,23 @@ const Router = () => {
       path: "/number-level",
       element: (
         <Layout>
-          <NumberLevel />
+          <Outlet />
         </Layout>
       ),
+      children: [
+        {
+          path: "",
+          element: <NumberLevel />
+        },
+        {
+          path: "create",
+          element: <CreateNumberLevel />
+        },
+        {
+          path: "detail/:id",
+          element: <DetailNumberLevel />
+        }
+      ]
     },
     {
       path: "/report",

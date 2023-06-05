@@ -112,3 +112,41 @@ export const SERVICE_OPTION_STATUS_DETAIL = [
         color: "#6C7585",
     },
 ]
+
+export const ALLOCATION_NUMBER_OPTION_STATUS = [
+    {
+        value: 1,
+        label: "Tất cả",
+        color: "#000"
+    },
+    {
+        value: 2,
+        label: "Đang chờ",
+        color: "#4277FF"
+    },
+    {
+        value: 3,
+        label: "Đã sử dụng",
+        color: "#7E7D88"
+    },
+    {
+        value: 4,
+        label: "Bỏ qua",
+        color: "#E73F3F"
+    },
+]
+
+export const ALLOCATION_NUMBER_OPTION_ORIGIN = [
+    {
+        value: 1,
+        label: "Tất cả",
+    },
+    {
+        value: 2,
+        label: "Kiosk",
+    },
+    {
+        value: 3,
+        label: "Hệ thống",
+    },
+]
