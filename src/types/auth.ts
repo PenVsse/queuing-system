@@ -15,9 +15,15 @@ export interface IUser {
     password: string | null;
     email: string | null;
     role: IRole;
+    status?: number;
 }
 
 export interface ILogin {
     username: string;
     password: string;
+}
+
+export interface IUserTable {
+    data: IUser[],
+    loading?: boolean;
 }

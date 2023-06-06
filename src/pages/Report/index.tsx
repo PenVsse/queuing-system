@@ -80,7 +80,7 @@ const Report: React.FC = () => {
                         className="root_color"
                         style={{ fontFamily: "Nunito", fontSize: "1rem", fontWeight: 600, textAlign: 'center' }}
                     >
-                        Cấp số mới
+                        Tải về
                     </Typography.Text>
                 </Row>
             </Row>

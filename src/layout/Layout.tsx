@@ -55,7 +55,11 @@ const items: MenuItem[] = [
   getItem("Dịch vụ", "/service", <WechatOutlined />),
   getItem("Cấp số", "/number-level", <RiStackLine />),
   getItem("Báo cáo", "/report", <HiOutlineDocumentReport />),
-  getItem("Cài đặt hệ thống", "/setting", <SettingOutlined />),
+  getItem("Cài đặt hệ thống", "", <SettingOutlined />, [
+    getItem("Quản lý vai trò", "/managment-role"),
+    getItem("Quản lý tài khoản", "/managment-account"),
+    getItem("Nhật ký người dùng", "/managment-log"),
+  ]),
 ];
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
@@ -89,7 +93,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           />
         </div>
         <MyMenu
-          mode="inline"
+          mode="vertical"
           style={{ height: "70%", border: 0 }}
           items={items}
           selectedKeys={pathname === "/" ? [] : [`/${pathname.split('/')[1]}`]}

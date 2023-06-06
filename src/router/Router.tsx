@@ -6,7 +6,16 @@ import { useAppSelector } from "../store/hook";
 import Layout from "../layout/Layout";
 import Dashboard from "../pages/Dashboard";
 import Report from "../pages/Report";
-import Setting from "../pages/Setting";
+
+import Role from "../pages/Managment/Role";
+import CreateRole from "../pages/Managment/Role/Create";
+import UpdateRole from "../pages/Managment/Role/Update";
+
+import Log from "../pages/Managment/Log";
+
+import Account from "../pages/Managment/Account";
+import CreateAccount from "../pages/Managment/Account/Create";
+import UpdateAccount from "../pages/Managment/Account/Update";
 
 import Device from "../pages/Device";
 import DetailDevice from "../pages/Device/Detail";
@@ -21,6 +30,7 @@ import DetailService from "../pages/Service/Detail";
 import NumberLevel from "../pages/NumberLevel";
 import CreateNumberLevel from "../pages/NumberLevel/Create";
 import DetailNumberLevel from "../pages/NumberLevel/Detail";
+import ResetPassword from "../pages/ResetPassword";
 
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -40,7 +50,7 @@ const Router = () => {
   const getResetPasswordPage = () => {
     if (auth.user) {
       return <Navigate to={"/"} />;
-    } else return <Login />;
+    } else return <ResetPassword />;
   };
 
   const routes = useRoutes([
@@ -83,12 +93,12 @@ const Router = () => {
         },
         {
           path: "update/:id",
-          element: <UpdateDevice />
+          element: <UpdateDevice />,
         },
         {
           path: "create",
-          element: <CreateDevice />
-        }
+          element: <CreateDevice />,
+        },
       ],
     },
     {
@@ -101,21 +111,21 @@ const Router = () => {
       children: [
         {
           path: "",
-          element: <Service />
+          element: <Service />,
         },
         {
           path: "create",
-          element: <CreateService />
+          element: <CreateService />,
         },
         {
           path: "update/:id",
-          element: <UpdateService />
+          element: <UpdateService />,
         },
         {
           path: "detail/:id",
-          element: <DetailService />
-        }
-      ]
+          element: <DetailService />,
+        },
+      ],
     },
     {
       path: "/number-level",
@@ -127,17 +137,17 @@ const Router = () => {
       children: [
         {
           path: "",
-          element: <NumberLevel />
+          element: <NumberLevel />,
         },
         {
           path: "create",
-          element: <CreateNumberLevel />
+          element: <CreateNumberLevel />,
         },
         {
           path: "detail/:id",
-          element: <DetailNumberLevel />
-        }
-      ]
+          element: <DetailNumberLevel />,
+        },
+      ],
     },
     {
       path: "/report",
@@ -148,10 +158,54 @@ const Router = () => {
       ),
     },
     {
-      path: "/setting",
+      path: "/managment-role",
       element: (
         <Layout>
-          <Setting />
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: <Role />
+        },
+        {
+          path: "create",
+          element: <CreateRole />
+        },
+        {
+          path: "update/:id",
+          element: <UpdateRole />
+        }
+      ]
+    },
+    {
+      path: "/managment-account",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: <Account />
+        },
+        {
+          path: "create",
+          element: <CreateAccount />
+        },
+        {
+          path: "update/:id",
+          element: <UpdateAccount />
+        }
+      ]
+    },
+    {
+      path: "/managment-log",
+      element: (
+        <Layout>
+          <Log />
         </Layout>
       ),
     },

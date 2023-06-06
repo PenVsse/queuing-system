@@ -150,3 +150,22 @@ export const ALLOCATION_NUMBER_OPTION_ORIGIN = [
         label: "Hệ thống",
     },
 ]
+
+export const OPTION_ROLES = [
+    {
+        value: 1,
+        label: "Tất cả"
+    },
+    {
+        value: 2,
+        label: "Kế toán"
+    },
+    {
+        value: 3,
+        label: "Quản lý"
+    },
+    {
+        value: 4,
+        label: "Admin"
+    }
+]
