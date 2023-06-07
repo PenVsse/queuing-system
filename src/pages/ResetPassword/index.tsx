@@ -48,10 +48,11 @@ const ResetPassword: React.FC = () => {
                             >
                                 Đặt lại mật khẩu
                             </Typography.Title>
+                            <div style={{ textAlign: 'center', font: 'Nunito', fontWeight: '400', fontSize: '18px', }}>Vui lòng nhập email để đặt lại mật khẩu của bạn *</div>
                             <InputField
-                                title="Vui lòng nhập email để đặt lại mật khẩu của bạn *"
+                                title
                                 titleSize={"1rem"}
-                                placeholder={"email"}
+                                placeholder={"Email"}
                                 size="large"
                                 value={email.value}
                                 invalidMessage={email.error}

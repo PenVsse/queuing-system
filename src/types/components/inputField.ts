@@ -6,7 +6,7 @@ export interface IInputFieldProps {
     titleSize: string | number;
     value?: string | number | undefined | null;
     defaultValue?: string | number | undefined | null;
-    invalidMessage?: string;
+    invalidMessage?: string | ReactNode;
     fontWeightTitle?: number;
     span?: number;
     placeholder?: string;

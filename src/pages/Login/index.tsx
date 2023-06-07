@@ -13,14 +13,16 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppDispatch } from "../../store/hook";
 import { login as setLogin } from "../../store/slice/authSlice";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 
 const loginSchema = yup.object().shape({
-  username: yup.string().required("username is required"),
-  password: yup.string().required("password is required"),
+  username: yup.string().required("Không được để trống!"),
+  password: yup.string().required("Không được để trống!"),
 });
 
 const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const [isShowFP, setIsShowFP] = useState(false);
   const { login } = useUser(db);
   const dispatch = useAppDispatch();
 
@@ -51,7 +53,7 @@ const Login: React.FC = () => {
       if (data[key as keyof ILogin].trim() === "") {
         setError(key as keyof ILogin, {
           type: "manual",
-          message: `${key} is required`,
+          message: `Không được để trống!`,
         });
         isError = true;
       }
@@ -66,10 +68,15 @@ const Login: React.FC = () => {
     if (user) {
       dispatch(setLogin({ user }));
     } else {
+      setError("username", {
+        type: "manual",
+        message: ' ',
+      });
       setError("password", {
         type: "manual",
-        message: `mật khẩu hoặc tên đăng nhập không chính xác`,
+        message: `Sai mật khẩu hoặc tên đăng nhập`,
       });
+      setIsShowFP(true);
     }
 
     setLoading(false);
@@ -99,7 +106,7 @@ const Login: React.FC = () => {
                   <InputField
                     title="Tên đăng nhập *"
                     titleSize={"1rem"}
-                    placeholder={"username"}
+                    placeholder={"Nhập tên đăng nhập"}
                     size="large"
                     {...field}
                     invalidMessage={
@@ -119,11 +126,14 @@ const Login: React.FC = () => {
                   <InputField
                     title="Mật khẩu *"
                     titleSize={"1rem"}
-                    placeholder={"password"}
+                    placeholder={"Nhập mật khẩu"}
                     size="large"
                     {...field}
                     invalidMessage={
-                      fieldState.error && fieldState.error.message
+                      fieldState.error &&
+                      <>
+                        <AiOutlineExclamationCircle /> {fieldState.error.message}
+                      </>
                     }
                     type="password"
                   />
@@ -131,11 +141,11 @@ const Login: React.FC = () => {
               }}
             />
           </Form.Item>
-          <Form.Item>
-            <Link className="root_color" to={"/reset-password"}>
+          {!isShowFP && <Form.Item>
+            <Link style={{ color: 'red' }} to={"/reset-password"}>
               Quên mật khẩu?
             </Link>
-          </Form.Item>
+          </Form.Item>}
           <Form.Item style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>
             <Row justify="center">
               <Button
@@ -160,10 +170,15 @@ const Login: React.FC = () => {
             </Row>
           </Form.Item>
         </Form>
+        {isShowFP && <Form.Item>
+          <Link style={{ color: 'red' }} to={"/reset-password"}>
+            Quên mật khẩu?
+          </Link>
+        </Form.Item>}
       </Col>
       <Col
         md={14}
-        style={{ display: "flex", alignItems: "center", position: "relative", backgroundColor: 'white' }}
+        style={{ display: "flex", alignItems: "center", position: "relative" }}
       >
         <img src={image} alt="logo" style={{ marginLeft: "6rem" }} />
         <Row
