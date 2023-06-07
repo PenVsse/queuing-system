@@ -178,7 +178,7 @@ const Login: React.FC = () => {
       </Col>
       <Col
         md={14}
-        style={{ display: "flex", alignItems: "center", position: "relative" }}
+        style={{ display: "flex", alignItems: "center", position: "relative", backgroundColor: 'white' }}
       >
         <img src={image} alt="logo" style={{ marginLeft: "6rem" }} />
         <Row
