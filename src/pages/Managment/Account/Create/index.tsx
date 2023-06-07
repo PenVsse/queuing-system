@@ -103,6 +103,7 @@ const Create: React.FC = () => {
                                 span={11}
                                 defaultValue={""}
                                 placeholder="Nhập mật khẩu"
+                                type="password"
                             />
                             <InputField
                                 title={
@@ -127,6 +128,7 @@ const Create: React.FC = () => {
                                 span={11}
                                 defaultValue={""}
                                 placeholder="Nhập lại mật khẩu"
+                                type="password"
                             />
                             <Col span={11}>
                                 <SelectField
@@ -168,7 +170,7 @@ const Create: React.FC = () => {
                                 <Typography.Text
                                     style={{ fontFamily: "Nunito", fontWeight: 500 }}
                                 >
-                                    Là trường bắt buộc
+                                    Là trường thông tin bắt buộc
                                 </Typography.Text>
                             </Col>
                         </Row>

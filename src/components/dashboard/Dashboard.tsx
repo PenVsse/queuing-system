@@ -57,23 +57,23 @@ const DemoArea = () => {
     },
     {
         "Date": "11",
-        "value": 1150
+        "value": 1998
     },
     {
         "Date": "12",
-        "value": 1210
+        "value": 1998
     },
     {
         "Date": "13",
-        "value": 3850
+        "value": 2850
     },
     {
         "Date": "14",
-        "value": 1250
+        "value": 1998
     },
     {
         "Date": "15",
-        "value": 850
+        "value": 2000
     },
     {
         "Date": "16",
@@ -81,25 +81,25 @@ const DemoArea = () => {
     },
     {
         "Date": "17",
-        "value": 850
+        "value": 2000
     },
     {
         "Date": "18",
-        "value": 385
+        "value": 2000
     },
     {
         "Date": "19",
-        "value": 3850
+        "value": 2850
     },
     {
         "Date": "20",
-        "value": 350
+        "value": 1350
     }, {
         "Date": "21",
-        "value": 3850
+        "value": 2850
     }, {
         "Date": "22",
-        "value": 3850
+        "value": 2850
     },
     ]);
     // const [data, setData] = useState([]);

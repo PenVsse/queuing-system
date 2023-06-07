@@ -69,7 +69,7 @@ const StaticItem: React.FC<IStaticItemProps> = ({
               value={percent}
               precision={2}
               valueStyle={{
-                color: status === "decrease" ? "#FF9501" : "#E73F3F",
+                color: status === "decrease" ? "#E73F3F" : "#FF9138",
                 fontSize: 10,
               }}
               prefix={

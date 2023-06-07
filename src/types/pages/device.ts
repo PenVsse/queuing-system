@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface DeviceTable {
     key: string;
     id: string;
@@ -27,6 +29,6 @@ export interface IDeviceTableProps {
 
 export interface IInfoProps {
     label?: string;
-    value?: string;
+    value?: string | ReactNode;
     span?: number;
 }

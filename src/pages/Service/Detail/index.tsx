@@ -41,11 +41,11 @@ const Detail: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Dịch vụ",
                     },
                     {
-                        title: "Danh sách thiết bị",
-                        href: "/device",
+                        title: "Danh sách dịch vụ",
+                        href: "/service",
                     },
                     {
                         title: "Chi tiết",

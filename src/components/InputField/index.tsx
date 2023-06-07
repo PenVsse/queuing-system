@@ -20,7 +20,6 @@ const InputField: React.FC<IInputFieldProps> = ({
     <Col span={span} style={{ margin: "0.5rem 0" }}>
       <Typography.Paragraph
         style={{
-          color: invalidMessage && "red",
           fontSize: titleSize,
           marginBottom: "0.25rem",
           fontWeight: fontWeightTitle,

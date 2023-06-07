@@ -16,11 +16,11 @@ const Create: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Dịch vụ",
                     },
                     {
-                        title: "Danh sách thiết bị",
-                        href: "/device",
+                        title: "Danh sách Dịch vụ",
+                        href: "/service",
                     },
                     {
                         title: "Thêm dịch vụ",
@@ -148,6 +148,16 @@ const Create: React.FC = () => {
                                 fontWeight: 600
                             }}
                         />
+                        <Row
+                            style={{ width: "100%", marginTop: "1rem", marginBottom: "2rem" }}
+                        >
+                            <label style={{ color: "red", marginRight: ".25rem" }}>*</label>
+                            <Typography.Text
+                                style={{ fontFamily: "Nunito", color: "#7E7D88" }}
+                            >
+                                Là trường thông tin bắt buộc
+                            </Typography.Text>
+                        </Row>
                     </Card>
                     <Row justify="center" style={{ marginTop: "1rem" }}>
                         <Space size={24}>

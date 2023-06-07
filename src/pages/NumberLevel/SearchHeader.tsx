@@ -11,7 +11,12 @@ import SelectDate from "../../components/SelectDate";
 import InputField from "../../components/InputField";
 import { BsSearch } from "react-icons/bs";
 
-const SearchHeader: React.FC = () => {
+type ISearchHeaderProps = {
+    status: number;
+    setStatus: React.Dispatch<React.SetStateAction<number>>
+}
+
+const SearchHeader: React.FC<ISearchHeaderProps> = ({ status, setStatus }) => {
     return (
         <Row justify={'space-between'}>
             <Space>
@@ -39,7 +44,8 @@ const SearchHeader: React.FC = () => {
                     }}
                     size="large"
                     options={ALLOCATION_NUMBER_OPTION_STATUS}
-                    defaultValue={ALLOCATION_NUMBER_OPTION_STATUS[0].value}
+                    defaultValue={status}
+                    onChange={(value) => setStatus(value)}
                 />
                 <SelectField
                     title="Nguồn cấp"

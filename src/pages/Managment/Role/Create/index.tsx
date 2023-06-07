@@ -19,7 +19,7 @@ const Create: React.FC = () => {
                         title: "Cài đặt hệ thống",
                     },
                     {
-                        title: "Cập nhật vai trò",
+                        title: "Thêm vai trò",
                     },
                 ]}
             />
@@ -84,7 +84,7 @@ const Create: React.FC = () => {
                                         <Typography.Text
                                             style={{ fontFamily: "Nunito", fontWeight: 500 }}
                                         >
-                                            Là trường bắt buộc
+                                            Là trường thông tin bắt buộc
                                         </Typography.Text>
                                     </Col>
                                 </Row>

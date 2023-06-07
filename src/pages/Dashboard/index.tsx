@@ -9,6 +9,7 @@ import { DesktopOutlined, WechatOutlined } from "@ant-design/icons";
 import { RiStackLine } from "react-icons/ri";
 import { BsBookmarkStar, BsCalendar, BsCalendarCheck } from "react-icons/bs";
 import { FaUserClock } from "react-icons/fa";
+import { useState } from "react";
 
 const wrapperStyle: React.CSSProperties = {
   width: "100%",
@@ -16,8 +17,17 @@ const wrapperStyle: React.CSSProperties = {
   borderRadius: "#FF9138",
 };
 
+const OPTION_DATE = [
+  { value: 31, label: "Ngày" },
+  { value: 7, label: "Tuần" },
+  { value: 12, label: "Tháng" },
+]
+
 const Dashboard = () => {
   const { user } = useAppSelector((state) => state.auth);
+
+  const [optionValue, setOptionValue] = useState<number>(OPTION_DATE[0].value);
+
   return (
     <Row>
       <MyBreadcrumb
@@ -47,7 +57,7 @@ const Dashboard = () => {
               icon={
                 <div
                   style={{
-                    backgroundColor: "#DADADA",
+                    backgroundColor: "rgba(166 194 255 / 49%)",
                     color: "#6695FB",
                     borderRadius: "50%",
                     width: 44,
@@ -160,7 +170,7 @@ const Dashboard = () => {
                     marginBottom: "0.5rem",
                   }}
                 >
-                  Bảng thống kê ngày
+                  {`Bảng thống kê ` + `${OPTION_DATE.find(opt => opt.value === optionValue)?.label}`.toLowerCase()}
                 </Typography.Title>
                 <Typography.Text
                   style={{ fontFamily: "Nunito", opacity: "0.8" }}
@@ -184,12 +194,9 @@ const Dashboard = () => {
                 <Select
                   size="large"
                   style={{ width: 120 }}
-                  defaultValue={"Ngày"}
-                  options={[
-                    { value: "Ngày", label: "Ngày" },
-                    { value: "Tháng", lavel: "Tháng" },
-                    { value: "Năm", label: "Năm" },
-                  ]}
+                  defaultValue={optionValue}
+                  options={OPTION_DATE}
+                  onChange={(value) => setOptionValue(value)}
                 />
               </Row>
             </Row>
@@ -200,9 +207,9 @@ const Dashboard = () => {
               }}
               xField="date"
               yField="value"
-              data={Array.from({ length: 32 }, (_, index) => ({
-                date: index,
-                value: Math.floor(Math.random() * (500 - 0 + 1)) + 0,
+              data={Array.from({ length: OPTION_DATE.find(opt => opt.value === optionValue)?.value || 0 }, (_, index) => ({
+                date: index + 1 + "",
+                value: Math.floor(Math.random() * (5000)),
               }))}
             />
           </Row>

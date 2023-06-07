@@ -1,11 +1,27 @@
-import React from "react";
-import { Row, Col, Typography, Card, Select, Space, Button } from "antd";
+import React, { useState } from "react";
+import { Row, Col, Typography, Modal, Card, Select, Space, Button } from "antd";
 import MyBreadcrumb from "../../../components/MyBreadcrumb";
 import { useAppSelector } from "../../../store/hook";
 import { DEVICE_OPTION_SERVICES } from "../../../constants/option";
+import { textFont } from "../../Device/TableData";
+import styled from "styled-components";
+
+const MyModal = styled(Modal)`
+  .ant-modal-content {
+    padding: 1rem 0 0 0 !important;
+    width: 360px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+`
 
 const Create: React.FC = () => {
     const { user } = useAppSelector((state) => state.auth);
+    const [selectedService, setSelectedService] = useState<number>(
+        DEVICE_OPTION_SERVICES[0].value
+    );
+    const [open, setOpen] = useState<boolean>(false);
 
     return (
         <Row style={{ position: "relative" }}>
@@ -14,7 +30,7 @@ const Create: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Cấp số",
                     },
                     {
                         title: "Danh sách cấp số",
@@ -67,7 +83,9 @@ const Create: React.FC = () => {
                                     width: 400,
                                 }}
                                 size="large"
+                                value={selectedService}
                                 options={DEVICE_OPTION_SERVICES}
+                                onChange={(value) => setSelectedService(value)}
                                 placeholder="Chọn dịch vụ"
                             />
                         </Row>
@@ -87,13 +105,63 @@ const Create: React.FC = () => {
                             >
                                 Hủy bỏ
                             </Button>
-                            <Button size="large" type="primary" style={{ width: 120 }}>
+                            <Button
+                                size="large"
+                                type="primary"
+                                style={{ width: 120 }}
+                                onClick={() => setOpen(true)}
+                            >
                                 In số
                             </Button>
                         </Space>
                     </Card>
                 </Col>
             </Row>
+
+            <MyModal open={open} onCancel={() => setOpen(false)} footer={null}>
+                <Row justify="center" style={{ margin: "1rem 0 .5rem 0" }}>
+                    <Typography.Text
+                        style={{
+                            ...textFont("1.5rem"),
+                            fontWeight: 600,
+                            color: "#535261",
+                            textAlign: "center",
+                        }}
+                    >
+                        Số thứ tự được cấp
+                    </Typography.Text>
+                </Row>
+                <Row justify={"center"}>
+                    <Typography.Text
+                        className="root_color"
+                        style={{
+                            ...textFont("2.5rem"),
+                            fontWeight: 700,
+                            color: "#535261",
+                            textAlign: "center",
+                        }}
+                    >
+                        2001021
+                    </Typography.Text>
+                </Row>
+                <Row justify={"center"} style={{ marginBottom: '2em' }}>
+                    <Typography.Text>
+                        {`DV: ${DEVICE_OPTION_SERVICES.find(
+                            (opt) => opt.value === selectedService
+                        )?.label
+                            }`}
+                        <strong style={{ marginLeft: ".5rem" }}>{`(tại quầy số 1)`}</strong>
+                    </Typography.Text>
+                </Row>
+                <Row className="root_background" style={{ padding: '1rem 0' }}>
+                    <Col span={24} style={{ margin: '.25rem 0', display: 'flex', justifyContent: 'center' }}>
+                        <Typography.Text style={{ color: '#fff', ...textFont('1rem') }}>Thời gian cấp: 09:30 11/10/2021</Typography.Text>
+                    </Col>
+                    <Col span={24} style={{ margin: '.25rem 0', display: 'flex', justifyContent: 'center' }}>
+                        <Typography.Text style={{ color: '#fff', ...textFont('1rem') }}>Hạn sử dụng: 17:30 11/10/2021</Typography.Text>
+                    </Col>
+                </Row>
+            </MyModal>
         </Row>
     );
 };

@@ -131,6 +131,11 @@ const Login: React.FC = () => {
               }}
             />
           </Form.Item>
+          <Form.Item>
+            <Link className="root_color" to={"/reset-password"}>
+              Quên mật khẩu?
+            </Link>
+          </Form.Item>
           <Form.Item style={{ marginTop: "2rem", marginBottom: "0.5rem" }}>
             <Row justify="center">
               <Button
@@ -139,29 +144,26 @@ const Login: React.FC = () => {
                   borderColor: "#FF9138",
                   color: "#fff",
                   width: "170px",
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
                 size="large"
                 onClick={handleLogin}
                 disabled={loading}
               >
-                {loading && <Spin size="small" style={{ marginRight: '.5rem' }}/>}
+                {loading && (
+                  <Spin size="small" style={{ marginRight: ".5rem" }} />
+                )}
                 Đăng nhập
               </Button>
             </Row>
           </Form.Item>
         </Form>
-        <Form.Item>
-          <Link className="root_color" to={"/reset-password"}>
-            Quên mật khẩu?
-          </Link>
-        </Form.Item>
       </Col>
       <Col
         md={14}
-        style={{ display: "flex", alignItems: "center", position: "relative" }}
+        style={{ display: "flex", alignItems: "center", position: "relative", backgroundColor: 'white' }}
       >
         <img src={image} alt="logo" style={{ marginLeft: "6rem" }} />
         <Row

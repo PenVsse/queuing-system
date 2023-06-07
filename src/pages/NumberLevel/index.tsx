@@ -12,20 +12,28 @@ import { useNavigate } from "react-router-dom";
 
 const NumberLevel: React.FC = () => {
     const [data, setData] = useState<ITableAllocateNumber[]>([]);
+    const [status, setStatus] = useState<number>(1);
     const [loading, setLoading] = useState<boolean>(false);
     const { user } = useAppSelector((state) => state.auth);
     const { getAllAllocationNumber } = useAllocationNumber(db);
     const navigate = useNavigate();
 
-    const getData = async () => {
+    const getData = async (status: number) => {
         const dataResp = await getAllAllocationNumber();
-        setData(dataResp as ITableAllocateNumber[]);
+        if (status === 1) {
+            setData(dataResp as ITableAllocateNumber[]);
+        } else {
+            const dataType = dataResp as ITableAllocateNumber[]
+            setData(
+                dataType.filter(opt => opt.status === status)
+            )
+        }
     };
 
     useEffect(() => {
         setLoading(true);
-        getData().finally(() => setLoading(false));
-    }, []);
+        getData(status).finally(() => setLoading(false));
+    }, [status]);
 
     return (
         <Row style={{ position: "relative" }}>
@@ -34,7 +42,7 @@ const NumberLevel: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Cấp số",
                     },
                     {
                         title: "Danh sách cấp số",
@@ -53,7 +61,10 @@ const NumberLevel: React.FC = () => {
                     >
                         Quản lý cấp số
                     </Typography.Title>
-                    <SearchHeader />
+                    <SearchHeader
+                        status={status}
+                        setStatus={setStatus}
+                    />
                     <TableData data={data} loading={loading} />
                 </Col>
             </Row>

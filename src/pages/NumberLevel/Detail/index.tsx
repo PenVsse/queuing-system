@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Typography, Card } from "antd";
+import { Row, Col, Typography, Card, Badge } from "antd";
 import MyBreadcrumb from "../../../components/MyBreadcrumb";
 import { useAppSelector } from "../../../store/hook";
 import { useParams } from "react-router-dom";
@@ -32,6 +32,10 @@ const Detail: React.FC = () => {
         getData();
     }, []);
 
+    const status = ALLOCATION_NUMBER_OPTION_STATUS.find(
+        (opt) => opt.value === AllocationNumber?.status
+    )
+
     return (
         <Row style={{ position: "relative" }}>
             <MyBreadcrumb
@@ -39,7 +43,7 @@ const Detail: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Cấp số",
                     },
                     {
                         title: "Danh sách cấp số",
@@ -62,7 +66,7 @@ const Detail: React.FC = () => {
                     >
                         Quản lý cấp số
                     </Typography.Title>
-                    <Card style={{ marginTop: "1.5rem", height: '75vh' }}>
+                    <Card style={{ marginTop: "1.5rem", height: "75vh" }}>
                         <Typography.Title
                             className="root_color"
                             style={{
@@ -101,9 +105,14 @@ const Detail: React.FC = () => {
                                 span={12}
                                 label="Trạng thái"
                                 value={
-                                    ALLOCATION_NUMBER_OPTION_STATUS.find(
-                                        (opt) => opt.value === AllocationNumber?.status
-                                    )?.label
+                                    <>
+                                        <Badge
+                                            color={status?.color}
+                                            status="processing"
+                                            style={{ marginRight: ".25rem" }}
+                                        />
+                                        {status?.label}
+                                    </>
                                 }
                             />
                             <Info span={12} label="Số thứ tự" value={AllocationNumber?.id} />

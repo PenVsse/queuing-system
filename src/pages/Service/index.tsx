@@ -34,7 +34,7 @@ const Service: React.FC = () => {
                 user={user}
                 items={[
                     {
-                        title: "Thiết bị",
+                        title: "Dịch vụ",
                     },
                     {
                         title: "Danh sách dịch vụ",

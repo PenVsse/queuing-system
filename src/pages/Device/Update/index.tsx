@@ -202,7 +202,7 @@ const Update: React.FC = () => {
                 <Typography.Text
                   style={{ fontFamily: "Nunito", color: "#7E7D88" }}
                 >
-                  Là trường bắt buộc
+                  Là trường thông tin bắt buộc
                 </Typography.Text>
               </Row>
             </Card>
